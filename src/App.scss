@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'Playlist Script';
+    src: url('./Playlist-Script.otf') format('opentype');
+}
+
+.App {
+  text-align: center;
+}
+
+.title{
+  font:{
+    family: 'Playlist Script', 'sans-serif';
+    size: 18vh;
+  }
+  margin-top: 11vh;
+}
+
+.form-control{
+  margin: 2vh;
+}
+
+.form-group{
+  margin: 20vh;
+}
