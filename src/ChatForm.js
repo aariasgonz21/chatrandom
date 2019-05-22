@@ -28,6 +28,7 @@ class ChatForm extends Component{
   }
 
   render(){
+    console.log(this.state.message)
     return(
       <div>
         <form className="form-group" onSubmit={this.sendMessage}>

@@ -13,6 +13,15 @@ class Chat extends Component{
           messages: []
       };
     this.socket = io('localhost:8080');
+    this.socket.on('RECEIVE_MESSAGE', function(data){
+      addMessage(data);
+    });
+
+    const addMessage = data => {
+      console.log(data);
+      this.setState({messages: [...this.state.messages, data]});
+      console.log(this.state.messages);
+    };
   }
 
   render(){
