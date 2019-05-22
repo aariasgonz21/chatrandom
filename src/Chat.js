@@ -1,18 +1,28 @@
-import React, { useState } from 'react';
+import React,{ Component } from 'react';
+import './App.scss';
 import ChatForm from './ChatForm'
 import Messages from './Messages'
+import io from "socket.io-client";
 
-function Chat(props){
-  const [username, setUsername] = useState('')
-  const [message, setMessage] = useState('')
-  const [messages, setMessages] = useState([])
+class Chat extends Component{
+  constructor(props){
+    super(props);
+    this.state = {
+          username: '',
+          message: '',
+          messages: []
+      };
+    this.socket = io('localhost:8080');
+  }
 
-  return(
-    <div>
-      <Messages messages={messages} username={username}/>
-      <ChatForm message={message} username={username}/>
-    </div>
-  )
+  render(){
+    return(
+      <div>
+        <Messages messages={this.state.messages} username={this.state.username}/>
+        <ChatForm message={this.state.message} username={this.state.username}/>
+      </div>
+    );
+  };
 };
 
 export default Chat;
