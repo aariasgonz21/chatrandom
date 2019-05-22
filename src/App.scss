@@ -3,8 +3,16 @@
     src: url('./Playlist-Script.otf') format('opentype');
 }
 
+$soft-black: #0e1111;
+$soft-white: #fbeee4;
+
+html{
+  background-color: $soft-black;
+}
+
 .App {
   text-align: center;
+  background-color: $soft-black;
 }
 
 .title{
@@ -12,7 +20,12 @@
     family: 'Playlist Script', 'sans-serif';
     size: 18vh;
   }
+  color:white;
   margin-top: 11vh;
+}
+
+.title-2{
+  color: $soft-white;
 }
 
 .form-control{

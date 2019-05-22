@@ -1,23 +1,43 @@
-import React, {useState} from 'react';
+import React, { Component } from 'react';
+import io from "socket.io-client"
 
-function ChatForm(props){
-  const [username, setUsername] = useState('');
-  const [message, setMessage] = useState('');
-  const [messages, subMessages] = useState([]);
-  function unChangeHandler(e) { setUsername(e.target.value);}
-  function messChangeHandler(e) { setMessage(e.target.value);}
-  // function subMessages(e){
-  // }
+class ChatForm extends Component{
+  constructor(props){
+    super(props);
+    this.state = {
+        username: "",
+        message: "",
+        messages: []
+    }
+    this.socket = io('localhost:8080');
 
-  return(
-    <div>
-      <form className="form-group" onSubmit={subMessages}>
-        <input className="form-control" placeholder="username" name="username" value={username} onChange={unChangeHandler}/>
-        <input className="form-control" placeholder="mmm whatcha say..." name="message" onChange={messChangeHandler} value={message}/>
-        <button className="btn btn-primary">Submit</button>
-      </form>
-    </div>
-  );
+    this.sendMessage = e => {
+      e.preventDefault();
+      this.socket.emit('SEND_MESSAGE', {
+        username: this.state.username,
+        message: this.state.message
+      });
+      this.setState({message: ''});
+    }
+  }
+
+  changeHandler = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
+
+  render(){
+    return(
+      <div>
+        <form className="form-group" onSubmit={this.sendMessage}>
+          <input className="form-control" placeholder="username" name="username" value={this.state.username} onChange={this.changeHandler}/>
+          <input className="form-control" placeholder="mmm whatcha say..." name="message" onChange={this.changeHandler} value={this.state.message}/>
+          <button className="btn btn-primary">Send</button>
+        </form>
+      </div>
+    );
+  }
 }
 
 export default ChatForm;
