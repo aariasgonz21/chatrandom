@@ -5,10 +5,11 @@ import Messages from './Messages'
 function Chat(props){
   const [username, setUsername] = useState('')
   const [message, setMessage] = useState('')
+  const [messages, setMessages] = useState([])
 
   return(
     <div>
-      <Messages message={message} username={username}/>
+      <Messages messages={messages} username={username}/>
       <ChatForm message={message} username={username}/>
     </div>
   )
