@@ -25,6 +25,8 @@ Starts up server on Port 8080.
 
 ## Screenshots
 
+![ChatRandom](/public/chatrandom.gif)
+
 ![Chat1](/public/chat1.png)
 ---
 ![Chat2](/public/chat2.png)
