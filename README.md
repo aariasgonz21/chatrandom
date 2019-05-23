@@ -23,8 +23,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 Starts up server on Port 8080.
 
-## Gif
+## ChatRandom in Action
 
 ![ChatRandom](/public/chatrandom.gif)
----
-![Chat1](/public/chat1.png)
